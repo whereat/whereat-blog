@@ -75,6 +75,7 @@ function setResponseContext(req, res, data) {
         authorPattern = new RegExp('^\\/' + config.routeKeywords.author + '\\/'),
         privatePattern = new RegExp('^\\/' + config.routeKeywords.private + '\\/'),
         indexPattern = new RegExp('^\\/' + config.routeKeywords.page + '\\/'),
+
         homePattern = new RegExp('^\\/$|^\\/blog\\/');
 
     // paged context
@@ -183,7 +184,10 @@ function renderChannel(channelOpts) {
             return res.redirect(createUrl());
         }
 
-        return getPostPage(options).then(function then(page) {
+      return getPostPage(options).then(function then(page) {
+
+        if (channelOpts.name === 'home'){ res.redirect('/about'); }
+
             // If page is greater than number of pages we have, redirect to last page
             if (pageParam > page.meta.pagination.pages) {
                 return res.redirect(createUrl(page.meta.pagination.pages));
