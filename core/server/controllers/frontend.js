@@ -75,7 +75,7 @@ function setResponseContext(req, res, data) {
         authorPattern = new RegExp('^\\/' + config.routeKeywords.author + '\\/'),
         privatePattern = new RegExp('^\\/' + config.routeKeywords.private + '\\/'),
         indexPattern = new RegExp('^\\/' + config.routeKeywords.page + '\\/'),
-        homePattern = new RegExp('^\\/$');
+        homePattern = new RegExp('^\\/$|^\\/blog\\/');
 
     // paged context
     if (!isNaN(pageParam) && pageParam > 1) {
@@ -231,6 +231,10 @@ function renderChannel(channelOpts) {
 }
 
 frontendControllers = {
+  blog: renderChannel({
+    name: 'index',
+    route: '/blog'
+  }),
     homepage: renderChannel({
         name: 'home',
         route: '/',
