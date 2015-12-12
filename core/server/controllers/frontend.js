@@ -75,7 +75,8 @@ function setResponseContext(req, res, data) {
         authorPattern = new RegExp('^\\/' + config.routeKeywords.author + '\\/'),
         privatePattern = new RegExp('^\\/' + config.routeKeywords.private + '\\/'),
         indexPattern = new RegExp('^\\/' + config.routeKeywords.page + '\\/'),
-        homePattern = new RegExp('^\\/$');
+
+        homePattern = new RegExp('^\\/$|^\\/blog\\/');
 
     // paged context
     if (!isNaN(pageParam) && pageParam > 1) {
@@ -183,7 +184,8 @@ function renderChannel(channelOpts) {
             return res.redirect(createUrl());
         }
 
-        return getPostPage(options).then(function then(page) {
+      return getPostPage(options).then(function then(page) {
+
             // If page is greater than number of pages we have, redirect to last page
             if (pageParam > page.meta.pagination.pages) {
                 return res.redirect(createUrl(page.meta.pagination.pages));
@@ -231,6 +233,10 @@ function renderChannel(channelOpts) {
 }
 
 frontendControllers = {
+  blog: renderChannel({
+    name: 'index',
+    route: '/blog'
+  }),
     homepage: renderChannel({
         name: 'home',
         route: '/',
