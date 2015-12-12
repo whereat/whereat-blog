@@ -15,6 +15,9 @@ frontendRoutes = function frontendRoutes(middleware) {
         rssRouter = express.Router({mergeParams: true}),
         privateRouter = express.Router();
 
+    // Blog route
+    router.get('/blog', frontend.blog);
+
     // ### Admin routes
     router.get(/^\/(logout|signout)\/$/, function redirectToSignout(req, res) {
         /*jslint unparam:true*/
