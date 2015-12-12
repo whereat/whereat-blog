@@ -186,8 +186,6 @@ function renderChannel(channelOpts) {
 
       return getPostPage(options).then(function then(page) {
 
-        if (channelOpts.name === 'home'){ res.redirect('/about'); }
-
             // If page is greater than number of pages we have, redirect to last page
             if (pageParam > page.meta.pagination.pages) {
                 return res.redirect(createUrl(page.meta.pagination.pages));
