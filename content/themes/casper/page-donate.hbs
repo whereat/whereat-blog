@@ -1,0 +1,94 @@
+{{!< default}}
+
+<link rel="stylesheet" type="text/css" href="../assets/whereat/css/donate.css"></link>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script data-main="../assets/whereat/js/app/donate.js" src="../assets/whereat/js/require.js"></script>
+
+{{! This is a page template. A page outputs content just like any other post, and has all the same attributes by default, but you can also customise it to behave differently if you prefer. }}
+
+{{! Everything inside the #post tags pulls data from the page }}
+{{#post}}
+
+<header class="main-header post-head {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}">
+    <nav class="main-nav {{#if image}}overlay{{/if}} clearfix">
+        {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>{{/if}}
+        {{#if @blog.navigation}}
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        {{/if}}
+    </nav>
+</header>
+
+
+<main class="content" role="main">
+    <article class="{{post_class}}">
+
+        <header class="post-header">
+            <h1 class="post-title">{{title}}</h1>
+        </header>
+
+        <section class="post-content">
+
+          <div id="donation-section">
+
+            <div id="donation-success-container"></div>
+            
+            <div id="donation-form-container">
+
+              <form action="" method="GET" id="donation-form">
+                <span class="payment-errors"></span>
+
+                <div class="form-row">
+                  <label>
+                    <span id="donation-name-label">Name</span><br/>
+                    <input type="text" size="20" data-stripe="name" id="donation-name"/>
+                  </label>
+                </div>
+
+                <div class="form-row">
+                  <label>
+                    <span id="donation-email-label">Email</span><br/>
+                    <input type="text" size="20" id="donation-email"/>
+                  </label>
+                </div>
+
+                <div class="form-row">
+                  <label>
+                    <span id="donation-amount-label">Amount</span><br/>
+                    <input type="text" size="20" data-stripe="amount" id="donation-amount"/>
+                  </label>
+                </div>
+
+                <div class="form-row">
+                  <label>
+                    <span id="donation-card-number-label">Card Number</span><br/>
+                    <input type="text" size="20" data-stripe="number" id="donation-card-number"/>
+                  </label>
+                </div>
+
+                <div class="form-row">
+                  <label>
+                    <span id="donation-cvc-label">CVC</span><br/>
+                    <input type="text" size="4" data-stripe="cvc" id="donation-cvc"/>
+                  </label>
+                </div>
+
+                <div class="form-row">
+                  <label>
+                    <span id="donation-exp-month-label">Expiration (MM/YYYY)</span><br/>
+                    <input type="text" size="2" data-stripe="exp-month" id="donation-exp-month"/>
+                  </label>
+                  <span> / </span>
+                  <input type="text" size="4" data-stripe="exp-year" id="donation-exp-year"/>
+                </div>
+
+                <div id="donate-button-wrapper">
+                  <button id="donate-button" type="submit">Submit Payment</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+    </article>
+</main>
+{{/post}}
