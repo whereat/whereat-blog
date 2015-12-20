@@ -1,0 +1,36 @@
+/* donation form */
+
+#donation-section {
+  border: 1px solid black;
+  border-radius: .5em;
+  padding: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15em;
+}
+.form-row {
+  margin-top: .5em;
+}
+
+.form-row label {
+  font-weight: bold;
+}
+
+#donate-button {
+  background-color: grey;
+  border-radius: .5em;
+  padding: .5em;
+  margin-top: 2em;
+  text-decoration-style: bold;
+}
+
+#donate-button-wrapper {
+  position: relative;
+  left: 3em;
+}
+
+/* donation success */
+
+#donation-success-container {
+  display: none;
+}
