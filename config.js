@@ -11,7 +11,7 @@ config = {
     // When running Ghost in the wild, use the production environment.
     // Configure your URL and mail settings here
     production: {
-        url: 'https://whereat.io',
+        url: 'http://my-ghost-blog.com',
         mail: {},
         database: {
             client: 'sqlite3',
@@ -22,7 +22,7 @@ config = {
         },
 
         server: {
-            host: '0.0.0.0',
+            host: '127.0.0.1',
             port: '2368'
         }
     },
