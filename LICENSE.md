@@ -8,14 +8,14 @@ The Ghost code base is available under the [below license](#ghost-license)
 
 The custom modifications (found in `/content/themes/casper/assets/whereat/`)
 are Copyright (c) 2015-present, Total Location Test Paragraph,
-as part of Where@. All rights reserved.
+as part of the Where@ project. All rights reserved.
 
 The custom modifications for Where@ are free software:
 you can redistribute them and/or modify them under the terms of
 the GNU General Public License (GPL), either version 3
 of the License, or (at your option) any later version.
 
-Where@ is distributed in the hope that it will be useful,
+The Where@ code is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. For more details,
 see the full license below.
