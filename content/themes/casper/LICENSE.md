@@ -1,3 +1,5 @@
+# GHOST LICENSE
+
 Copyright (c) 2013-2016 Ghost Foundation
 
 Permission is hereby granted, free of charge, to any person
