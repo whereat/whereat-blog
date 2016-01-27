@@ -22,14 +22,18 @@ requirejs.config({
   baseUrl: '../assets/whereat/js/lib',
   paths: {
     app: '../../js/app'
+  },
+  shim: {
+    'jquery.simplePagination': ['jquery']
   }
 });
 
-requirejs(['jquery', 'lodash.min', 'app/api'], function($, _, api){
+requirejs(['jquery', 'lodash.min', 'app/api', 'app/donationList'], function($, _, api, donationList){
   $(document).ready(function(){
 
     Stripe.setPublishableKey('pk_test_Yo40YCPulm6rG6vdHl111PUv');
 
+    donationList.initialize('#donations-pagination');
     // (Event) -> Boolean
     $('#donation-form').submit(function(e) {
       $(this).find('button').prop('disabled', true);
