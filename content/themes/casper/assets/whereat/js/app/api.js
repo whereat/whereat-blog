@@ -17,12 +17,22 @@
 
 /* global define */
 
-define({
-  donate: function(donation, cb) {
-    cb(null, {
-      status: 'success',
-      name: donation.name,
-      amount: donation.amount
-    });
-  }
+define(['lodash.min'],function(_) {
+  return {
+    donate: function(donation, cb) {
+      cb(null, {
+        status: 'success',
+        name: donation.name,
+        amount: donation.amount
+      });
+    },
+    getDonations: function(cb) {
+      var fakeDonations = _.range(100).map(function(x){
+        return {
+          name: 'person' + x,
+          amount: 10 * x
+        };
+      });
+      cb(null, fakeDonations);
+  };
 });
