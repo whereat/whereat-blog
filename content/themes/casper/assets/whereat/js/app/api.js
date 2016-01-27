@@ -34,5 +34,7 @@ define(['lodash.min'],function(_) {
         };
       });
       cb(null, fakeDonations);
-  };
-});
+  }
+ };
+}
+);

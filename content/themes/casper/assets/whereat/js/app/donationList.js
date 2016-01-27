@@ -17,47 +17,39 @@
 
 define(['lodash.min', 'jquery', 'jquery.simplePagination'], function(_,$,simplePagination){
 
+  function sliceList (data, currentPage, itemsPerPage) {
+    // currentPage 1 indexed
+    var start = (currentPage - 1 ) * itemsPerPage;
+    var end =  start + itemsPerPage;
+    return _.slice(data, start, end);
+  }
+  
+  function renderList(data) {
+    $('#donations-list').html('<ul></ul>');
+    _.each(data, function(donation){
+      var html = '<li>' + donation.name + ' - $' + donation.amount + '</li>';
+      $('#donations-list' + ' ul').append(html);
+    });
+  };
+
+  var itemsPerPage = 10;
+  
   return {
-    initialize : function(selector) {
-      $(selector).pagination({
-        items: 100,
-        itemsOnPage: 10,
-        cssStyle: 'light-theme'
+    initialize : function(data) {
+      $("#donations-pagination").pagination({
+        items: data.length,
+        itemsOnPage: itemsPerPage,
+        cssStyle: 'light-theme',
+        onPageClick: function(pageNum) {
+          var subset = sliceList(data, pageNum, itemsPerPage);
+          renderList(subset);
+        },
+        onInit: function() {
+          var subset = sliceList(data, 1, itemsPerPage);
+          renderList(subset);
+        }
       });
     }
   };
   
 });
-
-/*
-var data = [];
-
-$(.pageination).pagination({
-  items: data.length,
-  itemsOnPage: 10,
-  cssStyle: 'light-theme',
-  selectOnClick: mySelectOnClick
-})
-
-function mySelectOnClick(pageNum) {
-  var sliceMath = getItemsGivenPage(pageNum);
-  var subset = splitItems(sliceMath);
-  renerList(subset);
-}
-function splitItems(sliceMath) {
-  data.slice(sliceMath)
-}
-
-function renderList(items) {
-  _.each(item, function(item){
-    // visuals
-    $(selector).append('<li>' + item.ammount + '</li>')
-  })
-}
-
-function getItemsGivenPage(page) {
-  // math to figure out slice
-  
-}
-
-*/
