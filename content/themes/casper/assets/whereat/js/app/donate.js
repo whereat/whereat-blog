@@ -22,14 +22,29 @@ requirejs.config({
   baseUrl: '../assets/whereat/js/lib',
   paths: {
     app: '../../js/app'
+  },
+  shim: {
+    'jquery.simplePagination': ['jquery']
   }
 });
 
-requirejs(['jquery', 'lodash.min', 'app/api'], function($, _, api){
+requirejs(['jquery', 'lodash.min', 'app/api', 'app/donationList'], function($, _, api, donationList){
   $(document).ready(function(){
-
+        
     Stripe.setPublishableKey('pk_test_Yo40YCPulm6rG6vdHl111PUv');
 
+    var DONATIONS; // var to store donations data
+    
+    // (err, [{}]) -> none (render list and pagination);
+    api.getDonations(function(err, donations){
+      if (err) {
+        // errors not handled yet
+      } else {
+        DONATIONS = donations;
+        donationList.initialize(donations);
+      }
+    });
+    
     // (Event) -> Boolean
     $('#donation-form').submit(function(e) {
       $(this).find('button').prop('disabled', true);
@@ -51,7 +66,7 @@ requirejs(['jquery', 'lodash.min', 'app/api'], function($, _, api){
       $form.find('button').prop('disabled', false);
     };
 
-    // (String) -> ApiRequest
+    // (String) -> Opaquest
     var parseApiRequest = function(token){
       var parseField = function(str){ return $('#donation-' + str).val(); };
       return {
@@ -74,6 +89,7 @@ requirejs(['jquery', 'lodash.min', 'app/api'], function($, _, api){
     var handleDonationSuccess = function(res){
       hideForm();
       showThankYouMsg(res);
+      donationList.initialize([{name: firstName(res.name), amount: res.amount}].concat(DONATIONS));
     };
 
     // () -> Unit
@@ -98,5 +114,6 @@ requirejs(['jquery', 'lodash.min', 'app/api'], function($, _, api){
         return char !== ' ';
       }).join('');
     };
+
   });
 });

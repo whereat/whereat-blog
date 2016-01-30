@@ -7,12 +7,16 @@ import wd, { asserters } from 'wd';
 const { isDisplayed, isNotDisplayed } = asserters;
 asPromised.transferPromiseness = wd.transferPromiseness;
 
+import _ from 'lodash';
+
+// to run the tests, selenium-standalone must be installed and started:
+// selenium-standalone start
+
 describe('donations page', function() {
 
   this.timeout(10000);
 
   let browser;
-
   before(() => {
     browser = wd.promiseChainRemote();
     return browser.init({browserName: 'chrome'}); });
@@ -110,8 +114,33 @@ describe('donations page', function() {
         .elementByCssSelector('#donation-success-container').text()
           .should.become('Thanks for donating $100000 Mary! Please tell a friend! <3')
 
-        .notify(done);
+        .elementByCssSelector('#donations-list > ul > li:nth-child(1)').text()
+          .should.become('Mary - $100000')
+    
+    .notify(done);
 
     });
+
+    // ZIGGY: I didn't have time to figure out how to test requirejs modules, so
+    // I just copy and pasted (gasp!) this function here.
+    describe('donation logic', () =>{
+      
+      function sliceList (data, currentPage, itemsPerPage) {
+        // currentPage 1 indexed
+        var start = (currentPage - 1 ) * itemsPerPage;
+        var end =  start + itemsPerPage;
+        return _.slice(data, start, end);
+      }
+      
+      it('sliceList returns correct number', () => {
+        var testData1 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+        var testData2 = _.range(100);
+        sliceList(testData1, 4, 3).should.eql([9,10,11]);
+        sliceList(testData1, 1, 10).should.eql([0,1,2,3,4,5,6,7,8,9]);
+        sliceList(testData2, 3, 10).should.eql(_.range(20, 30));
+      });
+
+    });
+    
   });
 });
