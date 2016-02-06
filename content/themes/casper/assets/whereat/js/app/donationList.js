@@ -17,6 +17,17 @@
 
 define(['lodash.min', 'jquery', 'jquery.simplePagination'], function(_,$,simplePagination){
 
+  // (String) -> String
+  var parseDollars = function(str){
+    var match = str.match(/^(\$?)(\d+\.?\d+)$/)[2];
+    return parseFloat(match);
+  };
+
+  // (Number) -> String
+  var prettyPrintDollars = function(float){
+    return "$" + float.toFixed(2).toString();
+  };
+
   function sliceList (data, currentPage, itemsPerPage) {
     // currentPage 1 indexed
     var start = (currentPage - 1 ) * itemsPerPage;
@@ -24,10 +35,10 @@ define(['lodash.min', 'jquery', 'jquery.simplePagination'], function(_,$,simpleP
     return _.slice(data, start, end);
   }
   
-  function renderList(data) {
+  function renderList(ds) {
     $('#donations-list').html('<ul></ul>');
-    _.each(data, function(donation){
-      var html = '<li>' + donation.name + ' - $' + donation.amount + '</li>';
+    _.each(ds, function(d){
+      var html = '<li><strong>' + d.name + '</strong>: ' + d.amount + ' (' + d.date+ ')</li>';
       $('#donations-list' + ' ul').append(html);
     });
   };
@@ -35,17 +46,28 @@ define(['lodash.min', 'jquery', 'jquery.simplePagination'], function(_,$,simpleP
   var itemsPerPage = 10;
   
   return {
-    initialize : function(data) {
+    // (String) -> Unit
+    setTotal:  function(str){
+      $('#donations-total').html("<h2>Total Donations: " + str + "</h2>");
+    },
+    // (String) -> Unit
+    newTotal: function(amount, total){
+      var newTotal = parseDollars(amount) + parseDollars(total);
+      console.log('new total: ', newTotal);
+      return prettyPrintDollars(newTotal);
+    },
+    // (DonationResponse) -> Unit
+    initialize : function(ds) {
       $("#donations-pagination").pagination({
-        items: data.length,
+        items: ds.length,
         itemsOnPage: itemsPerPage,
         cssStyle: 'light-theme',
         onPageClick: function(pageNum) {
-          var subset = sliceList(data, pageNum, itemsPerPage);
+          var subset = sliceList(ds, pageNum, itemsPerPage);
           renderList(subset);
         },
         onInit: function() {
-          var subset = sliceList(data, 1, itemsPerPage);
+          var subset = sliceList(ds, 1, itemsPerPage);
           renderList(subset);
         }
       });
