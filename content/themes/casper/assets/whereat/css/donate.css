@@ -17,6 +17,7 @@
 
 /* donation form */
 
+
 #donation-section {
   border: 1px solid black;
   border-radius: .5em;
@@ -46,8 +47,37 @@
   left: 3em;
 }
 
+#donate-anonymous-wrapper {
+    margin-top: 1em;
+}
+
+#donate-stripe-attribution {
+    margin-top: 1em;
+    text-align: center;
+}
+
+
 /* donation success */
 
 #donation-success-container {
   display: none;
+}
+
+/* donation list */
+
+#donations-total {
+    margin-top: 3em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+#donations-list ul {
+    text-align: center;
+    list-style-type: none;
+}
+
+/* donation header / footer */
+
+#donation-footer {
+    margin-top: 2em;
 }

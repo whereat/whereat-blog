@@ -29,6 +29,12 @@
 
         <section class="post-content">
 
+          <div class="donation-header">
+            <p>
+              Where@ makes software for liberation, not profit. Since we've pledged to never sell user data and keep Where@ free and open source forever, we've sacrificed the revenue streams that sustain most corporate software projects. We rely on help from our community to stay afloat, and we prefer it that way! Please help out with whatever you can.*
+            </p>
+          </div>
+
           <div id="donation-section">
 
             <div id="donation-success-container"></div>
@@ -82,17 +88,34 @@
                   <input type="text" size="4" data-stripe="exp-year" id="donation-exp-year"/>
                 </div>
 
+                <div class="form-row" id ="donate-anonymous-wrapper">
+                  <input type="checkbox" name="anonymous" id="donation-anonymous" value="true" />
+                  Keep my name private
+                </div>
+
+
+
                 <div id="donate-button-wrapper">
                   <button id="donate-button" type="submit">Submit Payment</button>
+                </div>
+
+                <div id="donate-stripe-attribution">
+                  <em>---- Powered by <a href="https://stripe.com/">Stripe</a> ----</em>
                 </div>
               </form>
             </div>
           </div>
         </section>
-      <div id="donations">
-      <div id="donations-list"></div>
-      <div id="donations-pagination"></div>
-      </div>
+        <div id="donations">
+          <div id="donations-total"></div>
+          <div id="donations-list"></div>
+          <div id="donations-pagination"></div>
+        </div>
+        <div id="donation-footer">
+          <p>
+            <em>*Please note, donations made through this site are not currently tax-deductible. They are gifts directly to the general partnership behind Where@, Total Location Test Paragraph. If you'd like to make a tax-deductible donation to our fiscal sponsor, Riseup Labs, please send us an email at whereat [dot] admin [at] riseup [dot] net.</em>
+          </p>
+        </div>
       
     </article>
 </main>

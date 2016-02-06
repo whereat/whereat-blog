@@ -17,24 +17,24 @@
 
 /* global define */
 
-define(['lodash.min'],function(_) {
+var url = 'https://donations.whereat.io';
+// for testing:
+// var url = 'https://donations-dev.whereat.io';
+// var url = 'http://localhost:3001'; // for testing
+
+define(['lodash.min', 'superagent.min'],function(_, request) {
   return {
-    donate: function(donation, cb) {
-      cb(null, {
-        status: 'success',
-        name: donation.name,
-        amount: donation.amount
-      });
+    donate: function(donation, cb){
+      return request
+        .post(url + '/donations', donation)
+        .end(function(err, res){ cb(err, res); });
     },
-    getDonations: function(cb) {
-      var fakeDonations = _.range(100).map(function(x){
-        return {
-          name: 'person' + x,
-          amount: 10 * x
-        };
-      });
-      cb(null, fakeDonations);
-  }
+    getDonations: function(cb){
+      return request
+        .get(url + '/donations')
+        .end(function(err, res){ cb(err, res); });
+    }
  };
-}
-);
+});
+
+

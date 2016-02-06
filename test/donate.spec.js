@@ -96,7 +96,6 @@ describe('donations page', function() {
 
     it('handles successful form submissions', done => {
 
-
       browser
 
         .elementByCssSelector('#donation-name').type('Mary Rose Cook')
