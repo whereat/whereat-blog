@@ -38,7 +38,7 @@ requirejs(['jquery', 'lodash.min', 'app/api', 'app/donationList'], function($, _
     var DONATIONS;
     var TOTAL;
     
-    // (err, [{}]) -> none (render list and pagination);
+    // (Fn(Error, DonationListResponse)) =>  Unit)
     api.getDonations(function(err, res){
       if (err) console.log('error in GET /donations', err);
       else {
