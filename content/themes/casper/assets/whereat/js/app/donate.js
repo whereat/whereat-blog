@@ -45,7 +45,7 @@ requirejs(['jquery', 'lodash.min', 'app/api', 'app/donationList'], function($, _
         TOTAL = res.body.total;
         donationList.setTotal(TOTAL);
 
-        DONATIONS = res.body.donations.reverse();
+        DONATIONS = res.body.donations;
         donationList.initialize(DONATIONS);
       }
     });
