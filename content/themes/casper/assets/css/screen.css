@@ -1601,6 +1601,23 @@ body:not(.post-template) .post-title {
     font-weight: bold;
 }
 
+.site-footer #logos {
+    text-align: center;
+}
+
+.site-footer #logos img {
+  margin: 5px;
+  transition: all .2s ease-in-out;
+}
+
+.site-footer #logos img:hover {
+  transform: scale(1.1);
+}
+
+.site-footer #logos a:hover {
+  border-bottom: none;
+}
+
 .site-footer a:hover {
     border-bottom: #bbc7cc 1px solid;
 }
