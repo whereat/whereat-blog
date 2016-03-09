@@ -1605,6 +1605,12 @@ body:not(.post-template) .post-title {
     text-align: center;
 }
 
+.site-footer #logos a {
+  vertical-align: middle;
+  display: list-item;
+  list-style-type: none;
+}
+
 .site-footer #logos img {
   margin: 5px;
   transition: all .2s ease-in-out;
@@ -1612,6 +1618,8 @@ body:not(.post-template) .post-title {
 
 .site-footer #logos img:hover {
   transform: scale(1.1);
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .site-footer #logos a:hover {
