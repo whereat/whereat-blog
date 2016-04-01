@@ -1,9 +1,35 @@
 {{!< default}}
 
+<meta property="og:description"   content="Hmm..." />
+
 <link rel="stylesheet" type="text/css" href="../assets/whereat/css/donate.css"></link>
 <link rel="stylesheet" type="text/css" href="../assets/whereat/css/simplePagination.css"></link>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script data-main="../assets/whereat/js/app/donate.js" src="../assets/whereat/js/require.js"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+<style>
+.share-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: -3em;
+}
+.fb-share-button {
+    margin-top: -.6em;
+    margin-right: 1em;
+}
+</style>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 {{! This is a page template. A page outputs content just like any other post, and has all the same attributes by default, but you can also customise it to behave differently if you prefer. }}
 
@@ -31,7 +57,13 @@
 
           <div class="donation-header">
             <p>
-              Where@ makes software for liberation, not profit. Since we've pledged to never sell user data and keep Where@ free and open source forever, we've sacrificed the revenue streams that sustain most corporate software projects. We rely on help from our community to stay afloat, and we prefer it that way! Please help out with whatever you can.*
+              Where@ is a safer location-sharing app for at risk-populations. It lets protesters, journalists, humanitarian aid workers, and refugees share their location with each other on a live-updated map. Users can exchange anonymous updates with a large group of strangers or private updates with a trusted circle of friends. To learn more, check out these blog posts about its <a href="/our-story">inception</a> and <a href="/2015/12/12/architecture">design.</a>
+            </p>
+            <p>
+              Since we believe that people – not ad companies or spy agencies – should control the technologies they use, we will never store any user data, never seek to profit off our users, and always keep our code free and open source. Since we're committed to making software for liberation instead of profit, we've sacrificed the revenue streams that sustain most corporate software projects.
+            </p>
+            <p>
+              <strong>We rely on help from our community to stay afloat. Please help out with whatever you can.*</strong>
             </p>
           </div>
 
@@ -115,6 +147,13 @@
           <div id="donations-pagination"></div>
         </div>
         <div id="donation-footer">
+
+          {{! Share buttons }}
+          <div class="share-buttons">
+            <div class="fb-share-button" data-href="https://whereat.io/donate/" data-layout="button_count"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://whereat.io/donate/" data-text="safer location sharing for at-risk populations" data-via="whereatio">Tweet</a>
+          </div>
+
           <p>
             <em>*Please note, donations made through this site are not currently tax-deductible. They are gifts directly to the general partnership behind Where@, Total Location Test Paragraph. If you'd like to make a tax-deductible donation to our fiscal sponsor, Riseup Labs, please send us an email at whereat [dot] admin [at] riseup [dot] net.</em>
           </p>
