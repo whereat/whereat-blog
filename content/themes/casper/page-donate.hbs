@@ -21,7 +21,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    margin-top: -3em;
+    margin-bottom: -2em;
 }
 .fb-share-button {
     margin-top: -.6em;
@@ -140,6 +140,13 @@
               </form>
             </div>
           </div>
+
+          {{! Share buttons }}
+          <div class="share-buttons">
+            <div class="fb-share-button" data-href="https://whereat.io/donate/" data-layout="button_count"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://whereat.io/donate/" data-text="safer location sharing for at-risk populations" data-via="whereatio">Tweet</a>
+          </div>
+          
         </section>
         <div id="donations">
           <div id="donations-total"></div>
@@ -147,12 +154,6 @@
           <div id="donations-pagination"></div>
         </div>
         <div id="donation-footer">
-
-          {{! Share buttons }}
-          <div class="share-buttons">
-            <div class="fb-share-button" data-href="https://whereat.io/donate/" data-layout="button_count"></div>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://whereat.io/donate/" data-text="safer location sharing for at-risk populations" data-via="whereatio">Tweet</a>
-          </div>
 
           <p>
             <em>*Please note, donations made through this site are not currently tax-deductible. They are gifts directly to the general partnership behind Where@, Total Location Test Paragraph. If you'd like to make a tax-deductible donation to our fiscal sponsor, Riseup Labs, please send us an email at whereat [dot] admin [at] riseup [dot] net.</em>
